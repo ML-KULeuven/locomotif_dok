@@ -311,7 +311,7 @@ class LoCoMotifDoK(locomotif.LoCoMotif):
             
             for (bm, em) in motif_set:
                 l = em - bm
-                mask[bm + int(self.overlap * l) - 1 : em - int(self.overlap * l)] = True
+                mask[bm + int(self.overlap * l) : em - int(self.overlap * l)] = True
 
             current_nb += 1
             motif_sets.append(((b, e), motif_set, best_fitness))
@@ -431,7 +431,7 @@ class LoCoMotifDoK(locomotif.LoCoMotif):
             
             for (bm, em) in motif_sets[best_i][1]:
                 l = em - bm
-                mask[bm + int(self.overlap * l) - 1 : em - int(self.overlap * l)] = True
+                mask[bm + int(self.overlap * l) : em - int(self.overlap * l)] = True
             
             if len(inds_to_discover) == 0: 
                 break

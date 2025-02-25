@@ -209,7 +209,7 @@ class LoCoMotif:
             motif_set = vertical_projections(self.induced_paths(b, e, mask))
             for (bm, em) in motif_set:
                 l = em - bm
-                mask[bm + int(overlap * l) - 1 : em - int(overlap * l)] = True
+                mask[bm + int(overlap * l) : em - int(overlap * l)] = True
 
             current_nb += 1
             yield (b, e), motif_set, fitnesses
