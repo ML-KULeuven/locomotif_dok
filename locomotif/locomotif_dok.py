@@ -309,9 +309,10 @@ class LoCoMotifDoK(locomotif.LoCoMotif):
             if best_fitness == 0.0:
                 break
             
-            for (bm, em) in motif_set:
-                l = em - bm
-                mask[bm + int(self.overlap * l) : em - int(self.overlap * l)] = True
+            for (b_m, e_m) in motif_set:
+                l = e_m - b_m
+                l_mask = max(1, int((1 - 2*overlap) * l)) # mask length must be lower bounded by 1 (otherwise, nothing is masked when overlap=0.5)
+                mask[b_m + (l - l_mask)//2 : b_m + (l - l_mask)//2 + l_mask] = True
 
             current_nb += 1
             motif_sets.append(((b, e), motif_set, best_fitness))
