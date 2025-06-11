@@ -432,7 +432,7 @@ class LoCoMotifDoK(locomotif.LoCoMotif):
             
             for (b_m, e_m) in motif_sets[best_i][1]:
                 l = e_m - b_m
-                l_mask = max(1, int((1 - 2*overlap) * l)) # mask length must be lower bounded by 1 (otherwise, nothing is masked when overlap=0.5)
+                l_mask = max(1, int((1 - 2*self.overlap) * l)) # mask length must be lower bounded by 1 (otherwise, nothing is masked when overlap=0.5)
                 mask[b_m + (l - l_mask)//2 : b_m + (l - l_mask)//2 + l_mask] = True
             
             if len(inds_to_discover) == 0: 
